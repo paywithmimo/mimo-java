@@ -4,6 +4,10 @@
 
 package com.mimo.service.example;
 
+
+
+
+import com.mimo.service.api.MimoAPI;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -29,10 +33,15 @@ import org.json.JSONObject;
 public class MiMoAPIView extends FrameView
 {
     String access_token = "";
+    String m_tempCode = "OIVjtRFPZ6A";
+    String m_tempSearchByName = "alus";
+    String m_tempNotes = "test";
+    int m_tempAmount = 100;
+
     public MiMoAPIView(SingleFrameApplication app)
     {
         super(app);
-
+        
         initComponents();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
@@ -251,7 +260,7 @@ public class MiMoAPIView extends FrameView
          {
             String responseString = "";
             StringBuffer accessToekenResponse = new StringBuffer();
-            String wsURL = "https://staging.mimo.com.ng/oauth/v2/token?client_id=NfXwj_-nso1NYdpZ&client_secret=xv-lHx9FusqgBWbEWkjDSn5x&url=https://www.google.com&code=_FwdctGbysk&grant_type=authorization_code";
+            String wsURL = MimoAPI.getAccessTokenRequestURL(m_tempCode);
             url = new URL(wsURL);
             connection = url.openConnection();
             httpConn = (HttpsURLConnection)connection;
@@ -263,7 +272,7 @@ public class MiMoAPIView extends FrameView
 
             httpConn.setDoOutput(true);
             httpConn.setDoInput(true);
-
+           
             //Read the response.
             isr = new InputStreamReader(httpConn.getInputStream());
             in = new BufferedReader(isr);
@@ -280,6 +289,7 @@ public class MiMoAPIView extends FrameView
                // System.out.println("jsonAccessToken====" + jsonAccessToken);
                 if(!jsonAccessToken.isNull("access_token"))
                     access_token = jsonAccessToken.getString("access_token");
+                MimoAPI.setAccessToken(access_token);
             }
          }
          catch(Exception e)
@@ -319,7 +329,7 @@ public class MiMoAPIView extends FrameView
         String responseString = "";
         String outputString = "";
         //System.out.println("access_token===" + access_token);
-        String wsURL = "https://staging.mimo.com.ng/partner/user/card_id?username=alus&access_token=" + access_token;
+        String wsURL = MimoAPI.getSearchByUsernameRequestURL(m_tempSearchByName);
         url = new URL(wsURL);
         connection = url.openConnection();
         httpConn = (HttpsURLConnection)connection;
@@ -380,12 +390,12 @@ public class MiMoAPIView extends FrameView
         String responseString = "";
         String outputString = "";
 
-        String wsURL = "https://staging.mimo.com.ng/partner/transfers?access_token=" + access_token + "&notes=test&amount=10";
+        String wsURL = MimoAPI.getTransferRequestURL(m_tempNotes, m_tempAmount);
         url = new URL(wsURL);
         connection = url.openConnection();
         httpConn = (HttpsURLConnection)connection;
 
-        httpConn.setRequestMethod("GET");
+        httpConn.setRequestMethod("POST");
 
 		String authString = "mimo:mimo";
 		String authStringEnc = Base64.encode(authString.getBytes());
@@ -393,7 +403,7 @@ public class MiMoAPIView extends FrameView
 
         httpConn.setDoOutput(true);
         httpConn.setDoInput(true);
-        System.out.print("==httpConn===" + httpConn.getResponseCode());
+        //System.out.print("==httpConn===" + httpConn.getResponseCode());
         //Read the response.
         isr = new InputStreamReader(httpConn.getInputStream());
         in = new BufferedReader(isr);

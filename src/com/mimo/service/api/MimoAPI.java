@@ -2,25 +2,27 @@ package com.mimo.service.api;
 
 
 
+
+
 public class MimoAPI
 {
 	private static final String TAG = MimoAPI.class.getName();
-	
-	private String m_token; // Access Token
-	
+
+	private static String m_token; // Access Token
+
 	public MimoAPI()
 	{
-		this.m_token = "";
+		m_token = "";
 	}
-	
+
 	/**
 	 * checks to see if the user has a valid access token
-	 * 
+	 *
 	 * @return YES if a valid access token is present, false otherwise
 	 **/
-	public boolean hasToken()
+	public static boolean hasToken()
 	{
-		if (this.m_token.equals(""))
+		if (m_token.equals(""))
 		{
 			return false;
 		}
@@ -29,71 +31,71 @@ public class MimoAPI
 			return true;
 		}
 	}
-	
+
 	/**
 	 * gets the stored access token
-	 * 
+	 *
 	 * @return a string representing the access token
 	 **/
-	public String getAccessToken()
+	public static String getAccessToken()
 	{
 		return m_token;
 	}
-	
+
 	/**
 	 * sets the access token
-	 * 
+	 *
 	 * @param p_token
 	 *            the string representing the token
 	 **/
-	public void setAccessToken(String p_token)
+	public static void setAccessToken(String p_token)
 	{
-		this.m_token = p_token;
+		m_token = p_token;
 	}
-	
+
 	/**
 	 * clears the access token
 	 **/
-	public void clearAccessToken()
+	public static void clearAccessToken()
 	{
-		this.m_token = null;
+		m_token = null;
 	}
-	
+
 	/**
 	 * A function to generate the Authentication Request Url which is to be opened
 	 * in the webview
-	 * 
+	 *
 	 * @return url : url generated for making the Authentication request.
 	 **/
-	
-	public String getAuthenticationRequestURL()
+
+	public static String getAuthUrl()
 	{
 		StringBuffer url = new StringBuffer();
-		
+
 		url.append(MimoAPIConstants.AUTHENTICATE_BASE_URL);
 		url.append(MimoAPIConstants.URL_KEY_CLIENT_ID
 				+ MimoAPIConstants.CLIENT_ID);
 		url.append(MimoAPIConstants.URL_KEY_REDIRECT_URL
 				+ MimoAPIConstants.REDIRECT_URL);
 		url.append(MimoAPIConstants.AUTHENTICATE_KEY_RESPONSE_TYPE);
-		
-//		Log.d(TAG, "AuthenticationRequest URL = " + url);
-		
+
+		//Log.d(TAG, "AuthenticationRequest URL = " + url);
+
 		return url.toString();
 	}
-	
+
 	/**
-	 * A function to generate the Accesstoken Request Url 
-	 * 
+	 * A function to generate the Accesstoken Request Url
+	 *
 	 * @param p_Code
 	 *            :the code received from the application.
-	 * 
+	 *
 	 * @return url : url generated for making the Authentication request.
 	 **/
-	public String getAccessTokenRequestURL(String p_Code)
+	public static String getAccessTokenRequestURL(String p_Code)
 	{
 		StringBuffer url = new StringBuffer();
-		
+
 		url.append(MimoAPIConstants.GET_ACCESSTOKEN_BASE_URL);
 		url.append(MimoAPIConstants.URL_KEY_CLIENT_ID
 				+ MimoAPIConstants.CLIENT_ID);
@@ -103,10 +105,117 @@ public class MimoAPI
 				+ MimoAPIConstants.REDIRECT_URL);
 		url.append(MimoAPIConstants.URL_KEY_CODE + p_Code);
 		url.append(MimoAPIConstants.GET_ACCESSTOKEN_KEY_GRANT_TYPE);
-		
-//		Log.d(TAG, "getAccessTokenRequest URL = " + url);
-		
+
+		//System.out.println("getAccessTokenRequest URL = " + url);
+
 		return url.toString();
 	}
-	
+
+	/**
+	 * A function to generate the Accesstoken Request Url
+	 *
+	 * @param p_username
+	 *            :takes the username for searching criteria.
+	 *
+	 * @return url : url generated for making the Search By User Email request.
+	 **/
+
+	public static String getSearchByUsernameRequestURL(String p_username)
+	{
+		StringBuffer url = new StringBuffer();
+
+		url.append(MimoAPIConstants.GET_PROFILE_URL);
+		url.append(MimoAPIConstants.SEARCH_USERNAME + p_username);
+		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+
+		//System.out.println("SearchingRequest URL = " + url);
+		return url.toString();
+	}
+
+	/**
+	 * A function to generate the Accesstoken Request Url
+	 *
+	 * @param p_email
+	 *            :takes the email id for searching criteria.
+	 *
+	 * @return url : url generated for making the Search By User Email request.
+	 **/
+
+	public static String getSearchByEmailRequestURL(String p_email)
+	{
+		StringBuffer url = new StringBuffer();
+
+		url.append(MimoAPIConstants.GET_PROFILE_URL);
+		url.append(MimoAPIConstants.SEARCH_EMAIL + p_email);
+		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+
+		//Log.d(TAG, "SearchingRequest URL = " + url);
+		return url.toString();
+	}
+
+	/**
+	 * A function to generate the Accesstoken Request Url
+	 *
+	 * @param p_phone
+	 *            :takes the phone for searching criteria.
+	 *
+	 * @return url : url generated for making the Search By User phone request.
+	 **/
+
+	public static String getSearchByPhoneRequestURL(String p_phone)
+	{
+		StringBuffer url = new StringBuffer();
+
+		url.append(MimoAPIConstants.GET_PROFILE_URL);
+		url.append(MimoAPIConstants.SEARCH_PHONE + p_phone);
+		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+
+		//Log.d(TAG, "SearchingRequest URL = " + url);
+		return url.toString();
+	}
+
+	/**
+	 * A function to generate the Accesstoken Request Url
+	 *
+	 * @param p_account
+	 *            :takes the account number for searching criteria.
+	 *
+	 * @return url : url generated for making the Search By User account number request.
+	 **/
+
+	public static String getSearchByAccountRequestURL(String p_account)
+	{
+		StringBuffer url = new StringBuffer();
+
+		url.append(MimoAPIConstants.GET_PROFILE_URL);
+		url.append(MimoAPIConstants.SEARCH_ACCOUNT_NUMBER + p_account);
+		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+
+		//Log.d(TAG, "SearchingRequest URL = " + url);
+		return url.toString();
+	}
+
+
+	/**
+	 * A function to generate the Fund Transfer Request Url
+	 *
+	 * @param p_amount
+	 *            :takes the account number for searching criteria.
+	 *
+	 * @return url : url generated for making the Search By User account number request.
+	 **/
+
+	public static String getTransferRequestURL(String p_notes,int p_amount)
+	{
+		StringBuffer url = new StringBuffer();
+
+		url.append(MimoAPIConstants.GET_TRANSFER_URL);
+		url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_token);
+		url.append(MimoAPIConstants.TRANSFER_NOTES +p_notes);
+		url.append(MimoAPIConstants.TRANSFER_AMOUNT +p_amount);
+
+		//Log.d(TAG, "TransferRequest URL = " + url);
+		return url.toString();
+	}
+
 }

@@ -21,23 +21,30 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import javax.net.ssl.HttpsURLConnection;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import org.json.JSONObject;
 
+
+
+import javax.swing.SwingWorker;
+
+import org.json.JSONObject;
 /**
  * The application's main frame.
  */
 public class MiMoAPIView extends FrameView
 {
     String access_token = "";
-    String m_tempCode = "OIVjtRFPZ6A";
+    String m_tempCode = "OB0o7TfMBNc";
     String m_tempSearchByName = "alus";
     String m_tempNotes = "test";
     int m_tempAmount = 100;
-
+    private static Logger logger = Logger.getLogger("mimo.logging");
     public MiMoAPIView(SingleFrameApplication app)
     {
         super(app);
@@ -246,11 +253,15 @@ public class MiMoAPIView extends FrameView
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
-/**
- * This method is used to get the access token.
- * @param evt
- */
-    private void getAccessToken(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAccessToken
+
+ public void logMessage(String logMsg)
+ {
+        LogRecord record = new LogRecord(Level.INFO, logMsg);
+        logger.log(record);
+ }
+
+ public void getAccessTokenPerformed()
+ {
         URL url;
         URLConnection connection;
         HttpsURLConnection httpConn = null;
@@ -272,7 +283,7 @@ public class MiMoAPIView extends FrameView
 
             httpConn.setDoOutput(true);
             httpConn.setDoInput(true);
-           
+
             //Read the response.
             isr = new InputStreamReader(httpConn.getInputStream());
             in = new BufferedReader(isr);
@@ -312,17 +323,33 @@ public class MiMoAPIView extends FrameView
                 e.printStackTrace();
             }
         }
-}//GEN-LAST:event_getAccessToken
-/**
- * This method is used to search the user list based on parameter like username, email, account number etc.
+ }
+ /**
+ * This method is used to get the access token.
  * @param evt
  */
-    private void getSearchUser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getSearchUser
-       URL url;
-       URLConnection connection;
-       HttpsURLConnection httpConn = null;
-       InputStreamReader isr = null;
-       BufferedReader in = null;
+    private void getAccessToken(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAccessToken
+
+    SwingWorker task = new SwingWorker()
+          {
+              protected Object doInBackground() throws Exception
+              {
+                //logMessage("getSearchUser()");
+                getAccessTokenPerformed();
+                return null;
+              }
+        };
+        task.execute();
+        
+}//GEN-LAST:event_getAccessToken
+
+ public void getSearchUserPerformed()
+ {
+      URL url;
+      URLConnection connection;
+      HttpsURLConnection httpConn = null;
+      InputStreamReader isr = null;
+      BufferedReader in = null;
       try
       {
 
@@ -374,13 +401,29 @@ public class MiMoAPIView extends FrameView
             e.printStackTrace();
         }
      }
-}//GEN-LAST:event_getSearchUser
-/**
- * This method is used to transfer the money.
+ }
+ /**
+ * This method is used to search the user list based on parameter like username, email, account number etc.
  * @param evt
  */
-    private void getFundTrasfer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFundTrasfer
-       URL url;
+    private void getSearchUser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getSearchUser
+      //new TestFrame().setVisible(true);
+
+        SwingWorker task = new SwingWorker()
+          {
+              protected Object doInBackground() throws Exception
+              {
+                //logMessage("getSearchUser()");
+                getSearchUserPerformed();
+                return null;
+              }
+        };
+        task.execute();
+}//GEN-LAST:event_getSearchUser
+
+ public void getFundTrasferPerformed()
+ {
+     URL url;
        URLConnection connection;
        HttpsURLConnection httpConn = null;
        InputStreamReader isr = null;
@@ -435,6 +478,22 @@ public class MiMoAPIView extends FrameView
             e.printStackTrace();
         }
       }
+ }
+ /**
+ * This method is used to transfer the money.
+ * @param evt
+ */
+    private void getFundTrasfer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFundTrasfer
+
+        SwingWorker task = new SwingWorker()
+          {
+              protected Object doInBackground() throws Exception
+              {
+                getFundTrasferPerformed();
+                return null;
+              }
+        };
+        task.execute();
 }//GEN-LAST:event_getFundTrasfer
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

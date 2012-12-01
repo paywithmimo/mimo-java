@@ -1,5 +1,5 @@
 /*
- * MiMoAPIApp.java
+ * MIMOAPIApp.java
  */
 
 package com.mimo.service.example;
@@ -10,13 +10,13 @@ import org.jdesktop.application.SingleFrameApplication;
 /**
  * The main class of the application.
  */
-public class MiMoAPIApp extends SingleFrameApplication {
+public class MIMOAPIApp extends SingleFrameApplication {
 
     /**
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new MiMoAPIView(this));
+        show(new MIMOAPIView(this));
     }
 
     /**
@@ -29,16 +29,16 @@ public class MiMoAPIApp extends SingleFrameApplication {
 
     /**
      * A convenient static getter for the application instance.
-     * @return the instance of MiMoAPIApp
+     * @return the instance of MIMOAPIApp
      */
-    public static MiMoAPIApp getApplication() {
-        return Application.getInstance(MiMoAPIApp.class);
+    public static MIMOAPIApp getApplication() {
+        return Application.getInstance(MIMOAPIApp.class);
     }
 
     /**
      * Main method launching the application.
      */
     public static void main(String[] args) {
-        launch(MiMoAPIApp.class, args);
+        launch(MIMOAPIApp.class, args);
     }
 }

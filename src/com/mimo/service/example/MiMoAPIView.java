@@ -1,14 +1,9 @@
 /*
- * MiMoAPIView.java
+ * MIMOAPIView.java
  */
 
 package com.mimo.service.example;
 
-
-
-
-import com.mimo.service.api.MimoAPI;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -16,39 +11,19 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import javax.net.ssl.HttpsURLConnection;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-
-
-import javax.swing.SwingWorker;
-
-import org.json.JSONObject;
 /**
  * The application's main frame.
  */
-public class MiMoAPIView extends FrameView
-{
-    String access_token = "";
-    String m_tempCode = "OB0o7TfMBNc";
-    String m_tempSearchByName = "alus";
-    String m_tempNotes = "test";
-    int m_tempAmount = 100;
-    private static Logger logger = Logger.getLogger("mimo.logging");
-    public MiMoAPIView(SingleFrameApplication app)
-    {
+public class MIMOAPIView extends FrameView {
+
+    public MIMOAPIView(SingleFrameApplication app) {
         super(app);
-        
+
         initComponents();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
@@ -109,11 +84,11 @@ public class MiMoAPIView extends FrameView
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
-            JFrame mainFrame = MiMoAPIApp.getApplication().getMainFrame();
-            aboutBox = new MiMoAPIAboutBox(mainFrame);
+            JFrame mainFrame = MIMOAPIApp.getApplication().getMainFrame();
+            aboutBox = new MIMOAPIAboutBox(mainFrame);
             aboutBox.setLocationRelativeTo(mainFrame);
         }
-        MiMoAPIApp.getApplication().show(aboutBox);
+        MIMOAPIApp.getApplication().show(aboutBox);
     }
 
     /** This method is called from within the constructor to
@@ -127,8 +102,6 @@ public class MiMoAPIView extends FrameView
 
         mainPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -142,28 +115,13 @@ public class MiMoAPIView extends FrameView
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.mimo.service.example.MiMoAPIApp.class).getContext().getResourceMap(MiMoAPIView.class);
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.mimo.service.example.MIMOAPIApp.class).getContext().getResourceMap(MIMOAPIView.class);
+        jButton1.setText(resourceMap.getString("btnLogin.text")); // NOI18N
+        jButton1.setActionCommand(resourceMap.getString("btnLogin.actionCommand")); // NOI18N
+        jButton1.setName("btnLogin"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getAccessToken(evt);
-            }
-        });
-
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getSearchUser(evt);
-            }
-        });
-
-        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-        jButton3.setName("jButton3"); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getFundTrasfer(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -172,23 +130,16 @@ public class MiMoAPIView extends FrameView
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGap(148, 148, 148)
+                .addComponent(jButton1)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(29, 29, 29)
                 .addComponent(jButton1)
-                .addGap(44, 44, 44)
-                .addComponent(jButton2)
-                .addGap(44, 44, 44)
-                .addComponent(jButton3)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -196,7 +147,7 @@ public class MiMoAPIView extends FrameView
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(com.mimo.service.example.MiMoAPIApp.class).getContext().getActionMap(MiMoAPIView.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(com.mimo.service.example.MIMOAPIApp.class).getContext().getActionMap(MIMOAPIView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
@@ -254,252 +205,12 @@ public class MiMoAPIView extends FrameView
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
- public void logMessage(String logMsg)
- {
-        LogRecord record = new LogRecord(Level.INFO, logMsg);
-        logger.log(record);
- }
-
- public void getAccessTokenPerformed()
- {
-        URL url;
-        URLConnection connection;
-        HttpsURLConnection httpConn = null;
-        InputStreamReader isr = null;
-        BufferedReader in = null;
-         try
-         {
-            String responseString = "";
-            StringBuffer accessToekenResponse = new StringBuffer();
-            String wsURL = MimoAPI.getAccessTokenRequestURL(m_tempCode);
-            url = new URL(wsURL);
-            connection = url.openConnection();
-            httpConn = (HttpsURLConnection)connection;
-
-            httpConn.setRequestMethod("POST");
-            String authString = "mimo:mimo";
-            String authStringEnc = Base64.encode(authString.getBytes());
-            httpConn.addRequestProperty("Authorization", "Basic " + authStringEnc);
-
-            httpConn.setDoOutput(true);
-            httpConn.setDoInput(true);
-
-            //Read the response.
-            isr = new InputStreamReader(httpConn.getInputStream());
-            in = new BufferedReader(isr);
-
-            //Write the SOAP message response to a String.
-            while ((responseString = in.readLine()) != null)
-            {
-                accessToekenResponse.append(responseString);
-            }
-            System.out.println("Access Token Response: " + accessToekenResponse.toString());
-            if(accessToekenResponse != null)
-            {
-                JSONObject jsonAccessToken = new JSONObject(accessToekenResponse.toString());
-               // System.out.println("jsonAccessToken====" + jsonAccessToken);
-                if(!jsonAccessToken.isNull("access_token"))
-                    access_token = jsonAccessToken.getString("access_token");
-                MimoAPI.setAccessToken(access_token);
-            }
-         }
-         catch(Exception e)
-         {
-             e.printStackTrace();
-         }
-        finally
-        {
-            try
-            {
-                if(httpConn != null)
-                    httpConn.disconnect();
-                if(isr != null)
-                    isr.close();
-                if(in != null)
-                    in.close();
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
- }
- /**
- * This method is used to get the access token.
- * @param evt
- */
-    private void getAccessToken(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAccessToken
-
-    SwingWorker task = new SwingWorker()
-          {
-              protected Object doInBackground() throws Exception
-              {
-                //logMessage("getSearchUser()");
-                getAccessTokenPerformed();
-                return null;
-              }
-        };
-        task.execute();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-}//GEN-LAST:event_getAccessToken
-
- public void getSearchUserPerformed()
- {
-      URL url;
-      URLConnection connection;
-      HttpsURLConnection httpConn = null;
-      InputStreamReader isr = null;
-      BufferedReader in = null;
-      try
-      {
-
-        String responseString = "";
-        String outputString = "";
-        //System.out.println("access_token===" + access_token);
-        String wsURL = MimoAPI.getSearchByUsernameRequestURL(m_tempSearchByName);
-        url = new URL(wsURL);
-        connection = url.openConnection();
-        httpConn = (HttpsURLConnection)connection;
-
-        httpConn.setRequestMethod("GET");
-
-		String authString = "mimo:mimo";
-		String authStringEnc = Base64.encode(authString.getBytes());
-		httpConn.addRequestProperty("Authorization", "Basic " + authStringEnc);
-
-        httpConn.setDoOutput(true);
-        httpConn.setDoInput(true);
-
-        //Read the response.
-        isr = new InputStreamReader(httpConn.getInputStream());
-        in = new BufferedReader(isr);
-
-        //Write the SOAP message response to a String.
-        while ((responseString = in.readLine()) != null)
-        {
-            outputString = outputString + responseString;
-        }
-        System.out.println("Search User Detail: " + outputString);
-      }
-      catch(Exception e)
-      {
-          e.printStackTrace();
-      }
-      finally
-      {
-        try
-        {
-            if(httpConn != null)
-                httpConn.disconnect();
-            if(isr != null)
-                isr.close();
-            if(in != null)
-                in.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-     }
- }
- /**
- * This method is used to search the user list based on parameter like username, email, account number etc.
- * @param evt
- */
-    private void getSearchUser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getSearchUser
-      //new TestFrame().setVisible(true);
-
-        SwingWorker task = new SwingWorker()
-          {
-              protected Object doInBackground() throws Exception
-              {
-                //logMessage("getSearchUser()");
-                getSearchUserPerformed();
-                return null;
-              }
-        };
-        task.execute();
-}//GEN-LAST:event_getSearchUser
-
- public void getFundTrasferPerformed()
- {
-     URL url;
-       URLConnection connection;
-       HttpsURLConnection httpConn = null;
-       InputStreamReader isr = null;
-       BufferedReader in = null;
-       try
-       {
-        String responseString = "";
-        String outputString = "";
-
-        String wsURL = MimoAPI.getTransferRequestURL(m_tempNotes, m_tempAmount);
-        url = new URL(wsURL);
-        connection = url.openConnection();
-        httpConn = (HttpsURLConnection)connection;
-
-        httpConn.setRequestMethod("POST");
-
-		String authString = "mimo:mimo";
-		String authStringEnc = Base64.encode(authString.getBytes());
-		httpConn.addRequestProperty("Authorization", "Basic " + authStringEnc);
-
-        httpConn.setDoOutput(true);
-        httpConn.setDoInput(true);
-        //System.out.print("==httpConn===" + httpConn.getResponseCode());
-        //Read the response.
-        isr = new InputStreamReader(httpConn.getInputStream());
-        in = new BufferedReader(isr);
-
-        //Write the SOAP message response to a String.
-        while ((responseString = in.readLine()) != null)
-        {
-            outputString = outputString + responseString;
-        }
-        System.out.println("For Fund Transfer: " + outputString);
-       }
-       catch(Exception e)
-       {
-           e.printStackTrace();
-       }
-       finally
-       {
-        try
-        {
-            if(httpConn != null)
-                httpConn.disconnect();
-            if(isr != null)
-                isr.close();
-            if(in != null)
-                in.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-      }
- }
- /**
- * This method is used to transfer the money.
- * @param evt
- */
-    private void getFundTrasfer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFundTrasfer
-
-        SwingWorker task = new SwingWorker()
-          {
-              protected Object doInBackground() throws Exception
-              {
-                getFundTrasferPerformed();
-                return null;
-              }
-        };
-        task.execute();
-}//GEN-LAST:event_getFundTrasfer
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;

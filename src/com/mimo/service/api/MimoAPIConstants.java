@@ -8,7 +8,9 @@ public final class MimoAPIConstants
 
 	//public static final String CLIENT_ID = "<Provide Client Id Here>"; //Provide the Client Id here.
 	//public static final String CLIENT_SECRET = "<Provide Client Secret Here>"; //Provide the Client Secret here.
-    
+
+    public static final String BASIC_AUTH_STRING = "mimo:mimo";
+
 	public static final String REDIRECT_URL = "http://google.com";
 
 	// Url Constants

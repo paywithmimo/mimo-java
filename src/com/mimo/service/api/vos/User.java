@@ -24,6 +24,7 @@ public class User
     private String m_level;
 
     /**
+     * Gets the account numner of the user.
      * @return the m_accountNumber
      */
     public String getAccountNumber()
@@ -32,6 +33,7 @@ public class User
     }
 
     /**
+     * Sets the account numner of the user.
      * @param m_accountNumber the m_accountNumber to set
      */
     public void setAccountNumber(String m_accountNumber)
@@ -40,6 +42,7 @@ public class User
     }
 
     /**
+     * Gets the account type.
      * @return the m_accountType
      */
     public String getAccountType()
@@ -48,6 +51,7 @@ public class User
     }
 
     /**
+     * Sets the account type.
      * @param m_accountType the m_accountType to set
      */
     public void setAccountType(String m_accountType)
@@ -56,6 +60,7 @@ public class User
     }
 
     /**
+     * Gets the name of the company.
      * @return the m_companyName
      */
     public String getCompanyName()
@@ -64,6 +69,7 @@ public class User
     }
 
     /**
+     * Sets the name of the company.
      * @param m_companyName the m_companyName to set
      */
     public void setCompanyName(String m_companyName)
@@ -72,6 +78,7 @@ public class User
     }
 
     /**
+     * Gets the first name.
      * @return the m_firstName
      */
     public String getFirstName()
@@ -80,6 +87,7 @@ public class User
     }
 
     /**
+     * Sets the first name.
      * @param m_firstName the m_firstName to set
      */
     public void setFirstName(String m_firstName)
@@ -88,6 +96,7 @@ public class User
     }
 
     /**
+     * Gets the id.
      * @return the m_id
      */
     public String getId()
@@ -96,6 +105,7 @@ public class User
     }
 
     /**
+     * Sets the id.
      * @param m_id the m_id to set
      */
     public void setId(String m_id)
@@ -104,6 +114,7 @@ public class User
     }
 
     /**
+     * Gets the middle name.
      * @return the m_middleName
      */
     public String getMiddleName()
@@ -112,6 +123,7 @@ public class User
     }
 
     /**
+     * Sets the middle name.
      * @param m_middleName the m_middleName to set
      */
     public void setMiddleName(String m_middleName)
@@ -120,6 +132,7 @@ public class User
     }
 
     /**
+     * Gets the surname.
      * @return the m_surname
      */
     public String getSurname()
@@ -128,6 +141,7 @@ public class User
     }
 
     /**
+     * Sets the surname.
      * @param m_surname the m_surname to set
      */
     public void setSurname(String m_surname)
@@ -136,6 +150,7 @@ public class User
     }
 
     /**
+     * Gets the user name.
      * @return the m_userName
      */
     public String getUserName()
@@ -144,6 +159,7 @@ public class User
     }
 
     /**
+     * Sets the user name.
      * @param m_userName the m_userName to set
      */
     public void setUserName(String m_userName)
@@ -152,6 +168,7 @@ public class User
     }
 
     /**
+     * Gets the Photo url.
      * @return the m_photoUrl
      */
     public String getPhotoUrl()
@@ -160,6 +177,7 @@ public class User
     }
 
     /**
+     * Sets the Photo url.
      * @param m_photoUrl the m_photoUrl to set
      */
     public void setPhotoUrl(String m_photoUrl)
@@ -168,6 +186,7 @@ public class User
     }
 
     /**
+     * Gets the email address.
      * @return the m_email
      */
     public String getEmail()
@@ -176,6 +195,7 @@ public class User
     }
 
     /**
+     * Sets the email address.
      * @param m_email the m_email to set
      */
     public void setEmail(String m_email)
@@ -184,6 +204,7 @@ public class User
     }
 
     /**
+     * Gets the level.
      * @return the m_level
      */
     public String getLevel()
@@ -192,6 +213,7 @@ public class User
     }
 
     /**
+     * Sets the level.
      * @param m_level the m_level to set
      */
     public void setLevel(String m_level)

@@ -8,12 +8,19 @@ import org.jdesktop.application.Action;
 
 public class MIMOAPIAboutBox extends javax.swing.JDialog {
 
-    public MIMOAPIAboutBox(java.awt.Frame parent) {
+    /**
+     * Constructor.
+     * @param parent Parent view calling this view.
+     */
+    public MIMOAPIAboutBox(java.awt.Frame parent)
+    {
         super(parent);
         initComponents();
         getRootPane().setDefaultButton(closeButton);
     }
-
+/**
+ * Closes the about MiMoAPI view.
+ */
     @Action public void closeAboutBox() {
         dispose();
     }

@@ -6,8 +6,8 @@
 package com.mimo.service.api.vos;
 
 /**
- *
- * @author Admin
+ * This class is used when user wants to transfer the money.
+ * @author
  */
 public class Transaction
 {
@@ -15,6 +15,7 @@ public class Transaction
     private String m_transactionId = null;
 
     /**
+     * Returns the message about transaction.
      * @return the m_message
      */
     public String getMessage()
@@ -23,6 +24,7 @@ public class Transaction
     }
 
     /**
+     * Sets the message about transaction.
      * @param m_message the m_message to set
      */
     public void setMessage(String m_message)
@@ -31,6 +33,7 @@ public class Transaction
     }
 
     /**
+     * Returns transaction id.
      * @return the m_transactionId
      */
     public String getTransactionId()
@@ -39,6 +42,7 @@ public class Transaction
     }
 
     /**
+     * sets transaction id.
      * @param m_transactionId the m_transactionId to set
      */
     public void setTransactionId(String m_transactionId)

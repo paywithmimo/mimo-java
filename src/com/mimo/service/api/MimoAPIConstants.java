@@ -43,7 +43,7 @@ public final class MimoAPIConstants
 	public static final String SEARCH_EMAIL = "email=";
 	public static final String SEARCH_PHONE = "phone=";
 	public static final String SEARCH_ACCOUNT_NUMBER = "account_number=";
-	public static final String ACCESS_TOKEN = "&access_token=";
+	public static final String ACCESS_TOKEN_URL = "&access_token=";
 
 	// Fund Transfer URL Constants
 	public static final String GET_TRANSFER_URL =
@@ -63,4 +63,33 @@ public final class MimoAPIConstants
 	public static final int READ_TIMEOUT=10000;
 	
 	public static int DEFAULT_MSG = 0;
+
+    //JSON response constants.
+
+    //getAccessToken
+    public static final String RESPONSE_TYPE = "response_type";
+    public static final String ERROR = "error";
+    public static final String DESCRIPTION = "description";
+    public static final String ACCESS_TOKEN = "access_token";
+    public static final String EXPIRES_IN = "expires_in";
+
+    //getUserList
+    public static final String ACCOUNT_NUMBER = "account_number";
+    public static final String ACCOUNT_TYPE = "account_type";
+    public static final String COMPANY_NAME = "company_name";
+    public static final String FIRST_NAME = "first_name";
+    public static final String ID = "id";
+    public static final String MIDDLE_NAME = "middle_name";
+    public static final String SURNAME = "surname";
+    public static final String USERNAME = "username";
+    public static final String PHOTO_URL = "photo_url";
+    public static final String EMAIL = "email";
+    public static final String LEVEL = "level";
+
+    //getTransactionDetail
+    public static final String MESSAGE = "message";
+    public static final String TRANSACTION_ID = "transaction_id";
+
+    public static final boolean DEBUG = true;
+
 }

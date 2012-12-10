@@ -73,7 +73,8 @@ public class HttpConnection
          }
          catch(Exception e)
          {
-             e.printStackTrace();
+             if(MimoAPIConstants.DEBUG)
+                e.printStackTrace();
          }
         finally
         {
@@ -89,7 +90,8 @@ public class HttpConnection
             }
             catch(Exception e)
             {
-                e.printStackTrace();
+                if(MimoAPIConstants.DEBUG)
+                    e.printStackTrace();
             }
         }
         if(m_httpResponse != null)

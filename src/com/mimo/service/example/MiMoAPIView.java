@@ -21,7 +21,12 @@ import javax.swing.JFrame;
  */
 public class MIMOAPIView extends FrameView {
 
-    public MIMOAPIView(SingleFrameApplication app) {
+    /**
+     * Constructor.
+     * @param app
+     */
+    public MIMOAPIView(SingleFrameApplication app)
+    {
         super(app);
 
         initComponents();
@@ -80,7 +85,9 @@ public class MIMOAPIView extends FrameView {
             }
         });
     }
-
+    /**
+     * This method shows the about mimo api window.
+     */
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
@@ -205,6 +212,10 @@ public class MIMOAPIView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method is invoked when login button is clicked.
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
     }//GEN-LAST:event_jButton1ActionPerformed

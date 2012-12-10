@@ -6,14 +6,13 @@
 /*
  * LoginView.java
  *
- * Created on Dec 1, 2012, 11:12:55 AM
- */
+  */
 
 package com.mimo.service.example;
 
 /**
- *
- * @author Admin
+ *Contains login controls. Login layout for the user.
+ * @author
  */
 
 public class LoginView extends javax.swing.JDialog
@@ -114,6 +113,10 @@ public class LoginView extends javax.swing.JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method is invoked when login button is clicked.
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

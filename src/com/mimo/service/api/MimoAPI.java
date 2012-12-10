@@ -1,15 +1,17 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template m_bufferedReader the editor.
+ */
+
 package com.mimo.service.api;
-
-
-
-
 
 public class MimoAPI
 {
-	private static final String TAG = MimoAPI.class.getName();
-
 	private static String m_token; // Access Token
 
+    /**
+     * Default constructor.
+     */
 	public MimoAPI()
 	{
 		m_token = "";
@@ -18,7 +20,7 @@ public class MimoAPI
 	/**
 	 * checks to see if the user has a valid access token
 	 *
-	 * @return YES if a valid access token is present, false otherwise
+	 * @return true if a valid access token is present, false otherwise
 	 **/
 	public static boolean hasToken()
 	{
@@ -62,9 +64,7 @@ public class MimoAPI
 	}
 
 	/**
-	 * A function to generate the Authentication Request Url which is to be opened
-	 * in the webview
-	 *
+	 * A function to generate the Authentication Request Url.
 	 * @return url : url generated for making the Authentication request.
 	 **/
 
@@ -90,7 +90,7 @@ public class MimoAPI
 	 * @param p_Code
 	 *            :the code received from the application.
 	 *
-	 * @return url : url generated for making the Authentication request.
+	 * @return url : url generated for making the Access Token request.
 	 **/
 	public static String getAccessTokenRequestURL(String p_Code)
 	{
@@ -106,18 +106,16 @@ public class MimoAPI
 		url.append(MimoAPIConstants.URL_KEY_CODE + p_Code);
 		url.append(MimoAPIConstants.GET_ACCESSTOKEN_KEY_GRANT_TYPE);
 
-		//System.out.println("getAccessTokenRequest URL = " + url);
-
 		return url.toString();
 	}
 
 	/**
-	 * A function to generate the Accesstoken Request Url
+	 * A function to generate the Searching Request Url
 	 *
 	 * @param p_username
 	 *            :takes the username for searching criteria.
 	 *
-	 * @return url : url generated for making the Search By User Email request.
+	 * @return url : url generated for making the Search By User name request.
 	 **/
 
 	public static String getSearchByUsernameRequestURL(String p_username)
@@ -126,14 +124,13 @@ public class MimoAPI
 
 		url.append(MimoAPIConstants.GET_PROFILE_URL);
 		url.append(MimoAPIConstants.SEARCH_USERNAME + p_username);
-		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+		url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_token);
 
-		//System.out.println("SearchingRequest URL = " + url);
 		return url.toString();
 	}
 
 	/**
-	 * A function to generate the Accesstoken Request Url
+	 * A function to generate the Searching Request Url
 	 *
 	 * @param p_email
 	 *            :takes the email id for searching criteria.
@@ -147,14 +144,14 @@ public class MimoAPI
 
 		url.append(MimoAPIConstants.GET_PROFILE_URL);
 		url.append(MimoAPIConstants.SEARCH_EMAIL + p_email);
-		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+		url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_token);
 
 		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return url.toString();
 	}
 
 	/**
-	 * A function to generate the Accesstoken Request Url
+	 * A function to generate the Searching Request Url
 	 *
 	 * @param p_phone
 	 *            :takes the phone for searching criteria.
@@ -168,14 +165,14 @@ public class MimoAPI
 
 		url.append(MimoAPIConstants.GET_PROFILE_URL);
 		url.append(MimoAPIConstants.SEARCH_PHONE + p_phone);
-		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+		url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_token);
 
 		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return url.toString();
 	}
 
 	/**
-	 * A function to generate the Accesstoken Request Url
+	 * A function to generate the Searching Request Url
 	 *
 	 * @param p_account
 	 *            :takes the account number for searching criteria.
@@ -189,7 +186,7 @@ public class MimoAPI
 
 		url.append(MimoAPIConstants.GET_PROFILE_URL);
 		url.append(MimoAPIConstants.SEARCH_ACCOUNT_NUMBER + p_account);
-		url.append(MimoAPIConstants.ACCESS_TOKEN + m_token);
+		url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_token);
 
 		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return url.toString();
@@ -200,9 +197,9 @@ public class MimoAPI
 	 * A function to generate the Fund Transfer Request Url
 	 *
 	 * @param p_amount
-	 *            :takes the account number for searching criteria.
-	 *
-	 * @return url : url generated for making the Search By User account number request.
+	 *            :takes the amount to transfer.
+	 *@param p_notes additional notes if any.
+	 * @return url : url generated for making transaction request.
 	 **/
 
 	public static String getTransferRequestURL(String p_notes,int p_amount)
@@ -211,10 +208,8 @@ public class MimoAPI
 
 		url.append(MimoAPIConstants.GET_TRANSFER_URL);
 		url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_token);
-		url.append(MimoAPIConstants.TRANSFER_NOTES +p_notes);
-		url.append(MimoAPIConstants.TRANSFER_AMOUNT +p_amount);
-
-		//Log.d(TAG, "TransferRequest URL = " + url);
+		url.append(MimoAPIConstants.TRANSFER_NOTES + p_notes);
+		url.append(MimoAPIConstants.TRANSFER_AMOUNT + p_amount);
 		return url.toString();
 	}
 

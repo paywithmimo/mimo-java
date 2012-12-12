@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.mimo.service.api.vos;
 
 /**
  * This class holds the access token related information.
- * @author
  */
 public class AccessToken
 {

@@ -1,23 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package com.mimo.service.api.parsor;
+package com.mimo.service.api.parser;
 
 import com.mimo.service.api.MimoAPIConstants;
 import com.mimo.service.api.vos.AccessToken;
 import com.mimo.service.api.vos.Transaction;
 import com.mimo.service.api.vos.User;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONObject;
 
 /**
  * This class parse the raw response from http request.
- * @author
  */
-public class MIMOAPIParsor
+public class MIMOAPIParser
 {
+    /**
+     * Class name for the error log.
+     */
+    private static String CLASSNAME = MIMOAPIParser.class.getName();
+    
     /**
      * This method returns the object of AccessToken class that contains the information about access token
      * @param p_accessToken json raw response from http connection about access token.
@@ -46,7 +47,9 @@ public class MIMOAPIParsor
         catch(Exception e)
         {
             if(MimoAPIConstants.DEBUG)
-                e.printStackTrace();
+            {
+                Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+            }
         }
         return m_accessToken;
     }
@@ -84,7 +87,9 @@ public class MIMOAPIParsor
         catch(Exception e)
         {
             if(MimoAPIConstants.DEBUG)
-                e.printStackTrace();
+            {
+                Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+            }
         }
         return m_userList;
     }
@@ -118,7 +123,9 @@ public class MIMOAPIParsor
         catch(Exception e)
         {
             if(MimoAPIConstants.DEBUG)
-                e.printStackTrace();
+            {
+                Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+            }
         }
         return m_transaction;
     }

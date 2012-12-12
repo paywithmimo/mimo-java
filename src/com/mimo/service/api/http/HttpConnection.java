@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template m_bufferedReader the editor.
- */
 
 package com.mimo.service.api.http;
 
@@ -14,11 +10,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
  * This retururns the http connection based on passed url and request method like get, post etc.
- * @author Admin
  */
 public class HttpConnection
 {
@@ -31,7 +28,11 @@ public class HttpConnection
     public static BufferedReader m_bufferedReader = null;
     public static String m_rawResponse;
     public static StringBuffer m_httpResponse;
-
+    
+    /**
+     * Class name for the error log.
+     */
+    private static String CLASSNAME = HttpConnection.class.getName();
     /**
      * The method to get http connection. This method returns the response of the requested url.
      * @param p_url The url of http request.
@@ -74,7 +75,9 @@ public class HttpConnection
          catch(Exception e)
          {
              if(MimoAPIConstants.DEBUG)
-                e.printStackTrace();
+             {
+               Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+             }
          }
         finally
         {
@@ -91,7 +94,9 @@ public class HttpConnection
             catch(Exception e)
             {
                 if(MimoAPIConstants.DEBUG)
-                    e.printStackTrace();
+                {
+                    Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+                }
             }
         }
         if(m_httpResponse != null)

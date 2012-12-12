@@ -1,9 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template m_bufferedReader the editor.
- */
-
 package com.mimo.service.api;
+
+/*
+ * MimoAPI class that contains the access token, and responsible for generating the different request urls.
+ */
 
 public class MimoAPI
 {

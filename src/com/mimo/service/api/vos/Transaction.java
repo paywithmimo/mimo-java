@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.mimo.service.api.vos;
 
 /**
  * This class is used when user wants to transfer the money.
- * @author
  */
 public class Transaction
 {

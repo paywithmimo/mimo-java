@@ -1,10 +1,11 @@
-package com.mimo.service.api;
 
+package com.mimo.service.api;
+/**
+ * API Constants.
+ */
 public final class MimoAPIConstants
 {
 	// CLIENT INFO Constants:
-	public static final String CLIENT_ID = "NfXwj_-nso1NYdpZ";
-	public static final String CLIENT_SECRET = "xv-lHx9FusqgBWbEWkjDSn5x";
 
 	//public static final String CLIENT_ID = "<Provide Client Id Here>"; //Provide the Client Id here.
 	//public static final String CLIENT_SECRET = "<Provide Client Secret Here>"; //Provide the Client Secret here.
@@ -90,6 +91,6 @@ public final class MimoAPIConstants
     public static final String MESSAGE = "message";
     public static final String TRANSACTION_ID = "transaction_id";
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
 }

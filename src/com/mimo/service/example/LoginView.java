@@ -1,18 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /*
  * LoginView.java
- *
-  */
+ */
 
 package com.mimo.service.example;
 
 /**
  *Contains login controls. Login layout for the user.
- * @author
  */
 
 public class LoginView extends javax.swing.JDialog

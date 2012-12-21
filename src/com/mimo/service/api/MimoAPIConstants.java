@@ -1,3 +1,34 @@
+/**
+* MIMO REST API Library for JAVA
+*
+* MIT LICENSE
+*
+* Permission is hereby granted, free of charge, to any person obtaining
+* a copy of this software and associated documentation files (the
+* "Software"), to deal in the Software without restriction, including
+* without limitation the rights to use, copy, modify, merge, publish,
+* distribute, sublicense, and/or sell copies of the Software, and to
+* permit persons to whom the Software is furnished to do so, subject to
+* the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*
+ * @package   MIMO
+* @copyright Copyright (c) 2012 Mimo Inc. (http://www.mimo.com.ng)
+* @license   http://opensource.org/licenses/MIT MIT
+* @version   1.2.6
+* @link      http://www.mimo.com.ng
+*/
+
 
 package com.mimo.service.api;
 /**
@@ -6,6 +37,8 @@ package com.mimo.service.api;
 public final class MimoAPIConstants
 {
 	// CLIENT INFO Constants:
+	public static final String CLIENT_ID = "NfXwj_-nso1NYdpZ";
+	public static final String CLIENT_SECRET = "xv-lHx9FusqgBWbEWkjDSn5x";
 
 	//public static final String CLIENT_ID = "<Provide Client Id Here>"; //Provide the Client Id here.
 	//public static final String CLIENT_SECRET = "<Provide Client Secret Here>"; //Provide the Client Secret here.
@@ -92,5 +125,10 @@ public final class MimoAPIConstants
     public static final String TRANSACTION_ID = "transaction_id";
 
     public static final boolean DEBUG = false;
+
+    //Re-fund Transfer URL Constants and Void Transfer URL Constants.
+    public static final String REFUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/refunds";
+    public static final String VOID_FUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/transfers/void";
+    public static final String FUND_TRANSACTION_ID="&transaction_id=";
 
 }

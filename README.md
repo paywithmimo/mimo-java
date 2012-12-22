@@ -44,9 +44,11 @@ MimoAPI.java class:
 
 
 MimoAPIConstants.java class :
+	
 	- No methods here. Contains constants for the API.
 	
 HttpConnection.java class :
+
 	- (String) makeHttpsRequest(String p_url, String p_requestMethod)
 	==> This method returns the response of the requested url based on request method like GET or POST.
 

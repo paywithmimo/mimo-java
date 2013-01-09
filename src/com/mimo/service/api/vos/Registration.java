@@ -32,16 +32,54 @@
 package com.mimo.service.api.vos;
 
 /**
- * This class is used when user performs fund transfer/refund transfer for the money.
+ * This is the simple vo for the registration. Holds the value of status of user registration request.
  */
-public class Transaction
+public class Registration
 {
+    private String m_accessToken = null;
+    private String m_accessTokenExpiresIn = null;
     private String m_message = null;
-    private String m_transactionId = null;
+    private String m_error = null;
 
     /**
-     * Returns the message about transaction.
-     * @return the m_message
+     * Gets access token
+     * @return the access tooken
+     */
+    public String getAccessToken()
+    {
+        return m_accessToken;
+    }
+
+    /**
+     * Sets the access token
+     * @param m_accessToken the Access Token to set
+     */
+    public void setAccessToken(String m_accessToken)
+    {
+        this.m_accessToken = m_accessToken;
+    }
+
+    /**
+     * Gets the access token expire time.
+     * @return the Access Token Expires In time
+     */
+    public String getAccessTokenExpiresIn()
+    {
+        return m_accessTokenExpiresIn;
+    }
+
+    /**
+     * Sets the access token expire time.
+     * @param m_accessTokenExpiresIn The Access Token Expires In to set
+     */
+    public void setAccessTokenExpiresIn(String m_accessTokenExpiresIn)
+    {
+        this.m_accessTokenExpiresIn = m_accessTokenExpiresIn;
+    }
+
+    /**
+     * Gets the message.
+     * @return the m_message The message.
      */
     public String getMessage()
     {
@@ -49,8 +87,8 @@ public class Transaction
     }
 
     /**
-     * Sets the message about transaction.
-     * @param m_message the m_message to set
+     * Sets the message
+     * @param m_message The Message to set.
      */
     public void setMessage(String m_message)
     {
@@ -58,20 +96,20 @@ public class Transaction
     }
 
     /**
-     * Returns transaction id.
-     * @return the m_transactionId
+     * Gets the error if any else null.
+     * @return the m_error Error message.
      */
-    public String getTransactionId()
+    public String getError()
     {
-        return m_transactionId;
+        return m_error;
     }
 
     /**
-     * sets transaction id.
-     * @param m_transactionId the m_transactionId to set
+     * Sets the error message.
+     * @param m_error the error message to set
      */
-    public void setTransactionId(String m_transactionId)
+    public void setError(String m_error)
     {
-        this.m_transactionId = m_transactionId;
+        this.m_error = m_error;
     }
 }

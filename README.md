@@ -27,6 +27,7 @@ This API includes various usage examples, including:
 * Vo that contains the information about access token [AccessToken.java]
 * Vo that contains the information about transactions[Transaction.java]
 * Vo that contains the information about searching the user [User.java]
+* Vo that contains the information about registration request of the user [Registration.java]
 
 
 ## Methods
@@ -41,10 +42,49 @@ MimoAPI.java class:
 
 	- (void)setAccessToken(String p_token)
 	==> Sets the access token.
+	
+	- (void)clearAccessToken()
+	==> Clears the access token
+	
+	- (String) getAuthUrl()
+	==> A function to generate the Authentication Request Url.
+	
+	- (String) getAccessTokenRequestURL(String p_Code)
+	==> A function to generate the Accesstoken Request Url
+	
+	- (String) getSearchByUsernameRequestURL(String p_username)
+	==> A function to generate the Searching Request Url
+	
+	- (String) getSearchByEmailRequestURL(String p_email)
+	==> A function to generate the Searching Request Url
+	
+	- (String) getSearchByPhoneRequestURL(String p_phone)
+	==> A function to generate the Searching Request Url
+	
+	- (String) getSearchByAccountRequestURL(String p_account)
+	==> A function to generate the Searching Request Url
+	
+	- (String) getTransferRequestURL(String p_notes,int p_amount)
+	==> A function to generate the Fund Transfer Request Url
+	
+	- (String) getRefundTransferUrl(String p_notes, String p_amount, String p_transId)
+	==> A function to generate the Re-Fund Transfer Request Url
+	
+	- (String) getVoidFundTransferUrl(String p_transId)
+	==> A function to generate the Void-Fund Transfer Request Url. To void transactions that are pending.
+	
+	- (String) getRegisterUrl(String p_about, String p_accountType, String p_address1, String p_address2,
+               String p_addressType, String p_challengeAnswer, String p_challengeQuestion, String p_city, String p_country,
+               String p_dob, String p_email, String p_facebook, String p_firstName, String p_gender, String p_middleName,
+               String p_password, String p_pin, String p_state, String p_surname, String p_termsAndConditions,
+               String p_twitter, String p_username, String p_website, String p_zip,
+               String p_companyName, String p_companyIdNumber, String p_rcIncorporationYear)
+	==> A function to generate the registration request url.
+	
 
 
 MimoAPIConstants.java class :
-	
+
 	- No methods here. Contains constants for the API.
 	
 HttpConnection.java class :
@@ -62,6 +102,10 @@ MIMOAPIParser.java class :
 	
 	- (Transaction) getTransactionDetail(String p_transactionDetail)
 	==> This method returns the transaction detail.
+	
+	- (Registration) getRegistrationDetail(String p_registrationDetail
+	==> This method returns the registration detail.
+	
 	
 AccessToken.java class :
 	- (String) getAccessToken()
@@ -172,6 +216,33 @@ User.java class :
 	
 	- (void) setLevel(String m_level)
 	==>  Sets the level.
+	
+Registration.java class :
+
+	- (String) getAccessToken()
+	==>  Gets access token.
+	
+	- (void) setAccessToken(String m_accessToken)
+	==>  Sets the access token.
+	
+	- (String) getAccessTokenExpiresIn()
+	==>  Gets the access token expire time.
+	
+	- (void) setAccessTokenExpiresIn(String m_accessTokenExpiresIn)
+	==>  Sets the access token expire time.
+	
+	- (String) getMessage()
+	==>  Gets the message.
+	
+	- (void) setMessage(String m_message)
+	==>  Sets the message.
+	
+	- (String) getError()
+	==>  Gets the error if any else null.
+	
+	- (void) setError(String m_error)
+	==>  Sets the error message.
+
 
 ## Credits
 

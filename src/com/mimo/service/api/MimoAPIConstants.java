@@ -87,16 +87,14 @@ public final class MimoAPIConstants
 	public static final String TRANSFER_NOTES = "&notes=";
 	public static final String TRANSFER_AMOUNT = "&amount=";
 
-
-	// Activity Navigation Constants
-	public static final String KEY_TOKEN = "token";
-	public static final String KEY_CLIENT_ID = "client_id";
-	public static final String KEY_CLIENT_SECRET = "client_secret";
+        //Error messages
+        public static final String UNABLE_TO_CONNECT = "Unable to connect to the server.";
+        public static final String ACCESS_TOKEN_ERR_MESSAGE = "Please login before proceed.";
 
 	public static final int CONNECTION_TIMEOUT=10000;
 	public static final int READ_TIMEOUT=10000;
 	
-	public static int DEFAULT_MSG = 0;
+	
 
     //JSON response constants.
 
@@ -124,11 +122,50 @@ public final class MimoAPIConstants
     public static final String MESSAGE = "message";
     public static final String TRANSACTION_ID = "transaction_id";
 
+    //Register request.
+    public static final String ACCESS_TOKEN_EXPIRES_IN = "access_token_expires_in";
+    
     public static final boolean DEBUG = false;
 
     //Re-fund Transfer URL Constants and Void Transfer URL Constants.
     public static final String REFUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/refunds";
     public static final String VOID_FUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/transfers/void";
     public static final String FUND_TRANSACTION_ID="&transaction_id=";
+
+    //Register WS URL Constants.
+    public static final String REGISTER_BASE_URL = "https://staging.mimo.com.ng/partner/registration?";
+    public static final String REGISTER_ABOUT = "&about=";
+    public static final String REGISTER_ACC_TYPE = "&account_type=";
+    public static final String REGISTER_ADDRESS1 = "&address=";
+    public static final String REGISTER_ADDRESS2 = "&address_2=";
+    public static final String REGISTER_ADDRESS_TYPE = "&address_type=";
+    public static final String REGISTER_CHALLENGE_ANSWER = "&challenge_answer=";
+    public static final String REGISTER_CHALLENGE_QUESTION="&challenge_question=";
+    public static final String REGISTER_CITY="&city=";
+    public static final String REGISTER_COUNTRY="&country=";
+    public static final String REGISTER_DOB="&dob=";
+    public static final String REGISTER_EMAIL="&email=";
+    public static final String REGISTER_FACEBOOK="&facebook=";
+    public static final String REGISTER_FIRST_NAME="&first_name=";
+    public static final String REGISTER_GENDER="&gender=";
+    public static final String REGISTER_MIDDLE_NAME="&middle_name=";
+    public static final String REGISTER_PASSWORD="&password=";
+    public static final String REGISTER_PIN="&pin=";
+    public static final String REGISTER_STATE="&state=";
+    public static final String REGISTER_SURNAME="&surname=";
+    public static final String REGISTER_TERMS_AND_COND="&terms_and_conditions=";
+    public static final String REGISTER_TWITTER="&twitter=";
+    public static final String REGISTER_USERNAME="&username=";
+    public static final String REGISTER_WEBSITE="&website=";
+    public static final String REGISTER_ZIP="&zip=";
+
+    public static final String REGISTER_ACCOUNT_TYPE_PERSONAL="personal";
+    public static final String REGISTER_ACCOUNT_TYPE_MERCHANT="merchant";
+    
+    public static final String REGISTER_COMPANY_NAME = "&company_name=";
+    public static final String REGISTER_COM_ID_NUMBER =	"&company_id_number=";
+    public static final String REGISTER_RC_INCORPORATION_YEAR =  "&rc_incorporation_year=";
+
+
 
 }

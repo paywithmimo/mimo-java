@@ -177,8 +177,6 @@ public class MimoAPI
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_EMAIL + p_email);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
-
-		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return m_url.toString();
 	}
 
@@ -198,8 +196,6 @@ public class MimoAPI
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_PHONE + p_phone);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
-
-		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return m_url.toString();
 	}
 
@@ -219,8 +215,6 @@ public class MimoAPI
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_ACCOUNT_NUMBER + p_account);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
-
-		//Log.d(TAG, "SearchingRequest URL = " + url);
 		return m_url.toString();
 	}
 
@@ -257,7 +251,6 @@ public class MimoAPI
 
 		m_url.append(MimoAPIConstants.REFUND_TRANSFER_URL);
 		m_url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_accessToken);
-		//url.append(MimoAPIConstants.TRANSFER_NOTES + p_notes);
                 try
 		{
 			m_url.append(MimoAPIConstants.TRANSFER_NOTES
@@ -270,8 +263,10 @@ public class MimoAPI
 
 		m_url.append(MimoAPIConstants.TRANSFER_AMOUNT + p_amount.trim());
 		m_url.append(MimoAPIConstants.FUND_TRANSACTION_ID + p_transId.trim());
+
 		return m_url.toString().trim();
 	}
+
         /**
          * A function to generate the Void-Fund Transfer Request Url. To void transactions that are pending.
          * @param p_transId transaction id for which you want to void fund transfer.
@@ -286,4 +281,278 @@ public class MimoAPI
             m_url.append(MimoAPIConstants.FUND_TRANSACTION_ID + p_transId.trim());
             return m_url.toString().trim();
 	}
+
+        /**
+         * A function to generate the registration request url.
+         * @param p_about The about paramter for register user. This field is optional.
+         * @param p_accountType account type like 'personal' or 'merchant'. If account type is 'merchant' <br>
+         * last three parameters are mandatory. Must be either 'personal' or 'merchant'
+         * @param p_address1 First address. This field is mandatory.
+         * @param p_address2 Second address. This field is optional.
+         * @param p_addressType address type. Must be 'home', 'business' or 'mailing'
+         * @param p_challengeAnswer Challenge answer. This field is mandatory.
+         * @param p_challengeQuestion Challenge question. This field is mandatory.
+         * @param p_city city of the user. This field is mandatory.
+         * @param p_country country of the user. This field is mandatory.
+         * @param p_dob Date of birth. Format must be DD/MM/YYYY. This field is mandatory.
+         * @param p_email email address. This field is mandatory.
+         * @param p_facebook facebook id. This field is optional.
+         * @param p_firstName First name. This field is mandatory.
+         * @param p_gender Gender of the user. This field is mandatory.
+         * @param p_middleName Middle name of the user. This field is optional.
+         * @param p_password Password of the user. Must be 6 characters, at least 1 number. Case sensitive.
+         * @param p_pin pin code of the user. Must be 4-digit PIN number.
+         * @param p_state State of the user. This field is mandatory.
+         * @param p_surname Surname of the user. This field is mandatory.
+         * @param p_termsAndConditions 1 if checked else 0
+         * @param p_twitter Twitter id. This field is optional.
+         * @param p_username Username of the user. Username is case sensitive. This field is mandatory.
+         * @param p_website Website of the user. This field is optional.
+         * @param p_zip Zip code of the user. This field is optional.
+         * @param p_companyName Company name of the user. Optional if p_accountType is 'personal'
+         * @param p_companyIdNumber Company Id Number.  Optional if p_accountType is 'personal'
+         * @param p_rcIncorporationYear Incorporation year.  Optional if p_accountType is 'personal'
+         * @return Url of the registration request.
+         */
+        public static String getRegisterUrl(String p_about, String p_accountType, String p_address1, String p_address2,
+               String p_addressType, String p_challengeAnswer, String p_challengeQuestion, String p_city, String p_country,
+               String p_dob, String p_email, String p_facebook, String p_firstName, String p_gender, String p_middleName,
+               String p_password, String p_pin, String p_state, String p_surname, String p_termsAndConditions,
+               String p_twitter, String p_username, String p_website, String p_zip,
+               String p_companyName, String p_companyIdNumber, String p_rcIncorporationYear)
+        {
+            StringBuffer m_url = new StringBuffer();
+            m_url.append(MimoAPIConstants.REGISTER_BASE_URL);
+            m_url.append(MimoAPIConstants.URL_KEY_CLIENT_ID + MimoAPIConstants.CLIENT_ID);
+            m_url.append(MimoAPIConstants.URL_KEY_CLIENT_SECRET + MimoAPIConstants.CLIENT_SECRET);
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ABOUT + URLEncoder.encode(p_about.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ABOUT + p_about.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ACC_TYPE + URLEncoder.encode(p_accountType.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ACC_TYPE + p_accountType.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ADDRESS1 + URLEncoder.encode(p_address1.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ADDRESS1 + p_address1.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ADDRESS2 + URLEncoder.encode(p_address2.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ADDRESS2 + p_address2.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ADDRESS_TYPE + URLEncoder.encode(p_addressType.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ADDRESS_TYPE + p_addressType.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_CHALLENGE_ANSWER + URLEncoder.encode(p_challengeAnswer.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_CHALLENGE_ANSWER + p_challengeAnswer.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_CHALLENGE_QUESTION + URLEncoder.encode(p_challengeQuestion.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_CHALLENGE_QUESTION + p_challengeQuestion.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_CITY + URLEncoder.encode(p_city.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_CITY + p_city.trim());
+	    }
+
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_COUNTRY + URLEncoder.encode(p_country.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_COUNTRY + p_country.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_DOB + URLEncoder.encode(p_dob.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_DOB + p_dob.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_EMAIL + URLEncoder.encode(p_email.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_EMAIL + p_email.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_FACEBOOK + URLEncoder.encode(p_facebook.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_FACEBOOK + p_facebook.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_FIRST_NAME + URLEncoder.encode(p_firstName.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_FIRST_NAME + p_firstName.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_GENDER + URLEncoder.encode(p_gender.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_GENDER + p_gender.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_MIDDLE_NAME + URLEncoder.encode(p_middleName.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_MIDDLE_NAME + p_middleName.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_PASSWORD + URLEncoder.encode(p_password.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_PASSWORD + p_password.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_PIN + URLEncoder.encode(p_pin.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_PIN + p_pin.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_STATE + URLEncoder.encode(p_state.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_STATE + p_state.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_SURNAME + URLEncoder.encode(p_surname.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_SURNAME + p_surname.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_TERMS_AND_COND + URLEncoder.encode(p_termsAndConditions.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_TERMS_AND_COND + p_termsAndConditions.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_TWITTER + URLEncoder.encode(p_twitter.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_TWITTER + p_twitter.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_USERNAME + URLEncoder.encode(p_username.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_USERNAME + p_username.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_WEBSITE + URLEncoder.encode(p_website.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_WEBSITE + p_website.trim());
+	    }
+            try
+	    {
+                m_url.append(MimoAPIConstants.REGISTER_ZIP + URLEncoder.encode(p_zip.trim(), "utf-8"));
+	    }
+            catch (UnsupportedEncodingException e)
+            {
+            	m_url.append(MimoAPIConstants.REGISTER_ZIP + p_zip.trim());
+	    }
+
+            //Additional params for merchant account
+            if(p_accountType.equalsIgnoreCase(MimoAPIConstants.REGISTER_ACCOUNT_TYPE_MERCHANT))
+            {
+                try
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_COMPANY_NAME + URLEncoder.encode(p_companyName.trim(), "utf-8"));
+                }
+                catch (UnsupportedEncodingException e)
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_COMPANY_NAME + p_companyName.trim());
+                }
+                try
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_COM_ID_NUMBER + URLEncoder.encode(p_companyIdNumber.trim(), "utf-8"));
+                }
+                catch (UnsupportedEncodingException e)
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_COM_ID_NUMBER + p_companyIdNumber.trim());
+                }
+                try
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_RC_INCORPORATION_YEAR + URLEncoder.encode(p_rcIncorporationYear.trim(), "utf-8"));
+                }
+                catch (UnsupportedEncodingException e)
+                {
+                    m_url.append(MimoAPIConstants.REGISTER_RC_INCORPORATION_YEAR + p_rcIncorporationYear.trim());
+                }
+            }
+            return m_url.toString();
+        }
 }

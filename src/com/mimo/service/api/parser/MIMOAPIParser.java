@@ -33,6 +33,7 @@ package com.mimo.service.api.parser;
 
 import com.mimo.service.api.MimoAPIConstants;
 import com.mimo.service.api.vos.AccessToken;
+import com.mimo.service.api.vos.Registration;
 import com.mimo.service.api.vos.Transaction;
 import com.mimo.service.api.vos.User;
 import java.util.ArrayList;
@@ -161,5 +162,52 @@ public class MIMOAPIParser
             }
         }
         return m_transaction;
+    }
+
+    /**
+     * This method returns the registration detail.
+     * @param p_registrationDetail Registration detail in json form.
+     * @return object of Registration containing information about registration.
+     */
+    public static Registration getRegistrationDetail(String p_registrationDetail)
+    {
+        JSONObject m_jsonRegistration = null;
+        Registration m_registration = null;
+        try
+        {
+            m_jsonRegistration = new JSONObject(p_registrationDetail);
+            if(m_jsonRegistration != null)
+            {
+                m_registration = new Registration();
+                if(m_jsonRegistration.isNull(MimoAPIConstants.ERROR))
+                {
+                    if(!m_jsonRegistration.isNull(MimoAPIConstants.ACCESS_TOKEN))
+                        m_registration.setAccessToken(m_jsonRegistration.get(MimoAPIConstants.ACCESS_TOKEN).toString());
+
+                    if(!m_jsonRegistration.isNull(MimoAPIConstants.ACCESS_TOKEN_EXPIRES_IN))
+                        m_registration.setAccessTokenExpiresIn(m_jsonRegistration.get(MimoAPIConstants.ACCESS_TOKEN_EXPIRES_IN).toString());
+
+                    if(!m_jsonRegistration.isNull(MimoAPIConstants.MESSAGE))
+                        m_registration.setMessage(m_jsonRegistration.get(MimoAPIConstants.MESSAGE).toString());
+
+                    m_registration.setError(null);
+                }
+                else if(!m_jsonRegistration.isNull(MimoAPIConstants.ERROR))
+                {
+                    m_registration.setError(m_jsonRegistration.get(MimoAPIConstants.ERROR).toString());
+                    m_registration.setAccessToken(null);
+                    m_registration.setAccessTokenExpiresIn(null);
+                    m_registration.setMessage(null);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            if(MimoAPIConstants.DEBUG)
+            {
+                Logger.getLogger(CLASSNAME).log(Level.SEVERE, null, e);
+            }
+        }
+        return m_registration;
     }
 }

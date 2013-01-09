@@ -69,7 +69,7 @@ public class HttpConnection
      * @param p_requestMethod http request method.
      * @return response of the http request if success otherwise null.
      */
-    public static String makeHttpsRequest(String p_url, String p_requestMethod)
+    public static String makeHttpsRequest(String p_url, String p_requestMethod)  throws Exception
     {
          try
          {

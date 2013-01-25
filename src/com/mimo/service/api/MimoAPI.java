@@ -282,7 +282,7 @@ public class MimoAPI
             return m_url.toString().trim();
 	}
 
-        /**
+       /**
          * A function to generate the registration request url.
          * @param p_about The about paramter for register user. This field is optional.
          * @param p_accountType account type like 'personal' or 'merchant'. If account type is 'merchant' <br>
@@ -294,7 +294,7 @@ public class MimoAPI
          * @param p_challengeQuestion Challenge question. This field is mandatory.
          * @param p_city city of the user. This field is mandatory.
          * @param p_country country of the user. This field is mandatory.
-         * @param p_dob Date of birth. Format must be DD/MM/YYYY. This field is mandatory.
+         * @param p_dob Date of birth. Format must be DD-MM-YYYY. This field is mandatory.
          * @param p_email email address. This field is mandatory.
          * @param p_facebook facebook id. This field is optional.
          * @param p_firstName First name. This field is mandatory.
@@ -309,6 +309,7 @@ public class MimoAPI
          * @param p_username Username of the user. Username is case sensitive. This field is mandatory.
          * @param p_website Website of the user. This field is optional.
          * @param p_zip Zip code of the user. This field is optional.
+         * @param p_mobilePhone Mobile Phone number. This field is mandatory.
          * @param p_companyName Company name of the user. Optional if p_accountType is 'personal'
          * @param p_companyIdNumber Company Id Number.  Optional if p_accountType is 'personal'
          * @param p_rcIncorporationYear Incorporation year.  Optional if p_accountType is 'personal'
@@ -318,7 +319,7 @@ public class MimoAPI
                String p_addressType, String p_challengeAnswer, String p_challengeQuestion, String p_city, String p_country,
                String p_dob, String p_email, String p_facebook, String p_firstName, String p_gender, String p_middleName,
                String p_password, String p_pin, String p_state, String p_surname, String p_termsAndConditions,
-               String p_twitter, String p_username, String p_website, String p_zip,
+               String p_twitter, String p_username, String p_website, String p_zip, String p_mobilePhone,
                String p_companyName, String p_companyIdNumber, String p_rcIncorporationYear)
         {
             StringBuffer m_url = new StringBuffer();
@@ -524,6 +525,14 @@ public class MimoAPI
             {
             	m_url.append(MimoAPIConstants.REGISTER_ZIP + p_zip.trim());
 	    }
+            try
+             {
+                m_url.append(MimoAPIConstants.REGISTER_MOBILE_PHONE + URLEncoder.encode(p_mobilePhone.trim(), "utf-8"));
+             }
+             catch (UnsupportedEncodingException e)
+             {
+                m_url.append(MimoAPIConstants.REGISTER_MOBILE_PHONE + p_mobilePhone.trim());
+             }
 
             //Additional params for merchant account
             if(p_accountType.equalsIgnoreCase(MimoAPIConstants.REGISTER_ACCOUNT_TYPE_MERCHANT))

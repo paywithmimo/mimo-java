@@ -93,8 +93,8 @@ public final class MimoAPIConstants
 
 	public static final int CONNECTION_TIMEOUT=10000;
 	public static final int READ_TIMEOUT=10000;
-	
-	
+
+
 
     //JSON response constants.
 
@@ -124,7 +124,7 @@ public final class MimoAPIConstants
 
     //Register request.
     public static final String ACCESS_TOKEN_EXPIRES_IN = "access_token_expires_in";
-    
+
     public static final boolean DEBUG = false;
 
     //Re-fund Transfer URL Constants and Void Transfer URL Constants.
@@ -161,10 +161,11 @@ public final class MimoAPIConstants
 
     public static final String REGISTER_ACCOUNT_TYPE_PERSONAL="personal";
     public static final String REGISTER_ACCOUNT_TYPE_MERCHANT="merchant";
-    
+
     public static final String REGISTER_COMPANY_NAME = "&company_name=";
     public static final String REGISTER_COM_ID_NUMBER =	"&company_id_number=";
     public static final String REGISTER_RC_INCORPORATION_YEAR =  "&rc_incorporation_year=";
+    public static final String REGISTER_MOBILE_PHONE =  "&mobile_phone=";
 
 
 

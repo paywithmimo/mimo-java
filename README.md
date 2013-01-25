@@ -77,7 +77,7 @@ MimoAPI.java class:
                String p_addressType, String p_challengeAnswer, String p_challengeQuestion, String p_city, String p_country,
                String p_dob, String p_email, String p_facebook, String p_firstName, String p_gender, String p_middleName,
                String p_password, String p_pin, String p_state, String p_surname, String p_termsAndConditions,
-               String p_twitter, String p_username, String p_website, String p_zip,
+               String p_twitter, String p_username, String p_website, String p_zip, String p_mobilePhone,
                String p_companyName, String p_companyIdNumber, String p_rcIncorporationYear)
 	==> A function to generate the registration request url.
 	

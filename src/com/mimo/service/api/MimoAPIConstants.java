@@ -60,12 +60,12 @@ public final class MimoAPIConstants
 			"authenticate?";
         
        //Staging URLs.
-	public static final String STAGE_API_SERVER="https://sandbox.mimo.com.ng/oauth/v2/";
-	public static final String STAGE_USER_API_SERVER = "https://sandbox.mimo.com.ng/partner/";
+	public static final String SANDBOX_API_SERVER="https://sandbox.mimo.com.ng/oauth/v2/";
+	public static final String SANDBOX_USER_API_SERVER = "https://sandbox.mimo.com.ng/partner/";
 	
 	//Live Server URLs.
-	public static final String LIVE_API_SERVER = "https://www.mimo.com.ng/oauth/v2/";
-	public static final String LIVE_USER_API_SERVER = "https://www.mimo.com.ng/partner/";
+	public static final String PRODUCTION_API_SERVER = "https://www.mimo.com.ng/oauth/v2/";
+	public static final String PRODUCTION_USER_API_SERVER = "https://www.mimo.com.ng/partner/";
         
         public static boolean IS_LIVE_URL = false;
 

@@ -108,11 +108,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_API_SERVER);
 		}
                 else
                 {
-                    m_url.append(MimoAPIConstants.STAGE_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.AUTHENTICATE_BASE_URL);
@@ -139,11 +139,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_API_SERVER);
 		}
                 else
                 {
-                    m_url.append(MimoAPIConstants.STAGE_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.GET_ACCESSTOKEN_BASE_URL);
@@ -173,11 +173,11 @@ public class MimoAPI
 		StringBuffer m_url = new StringBuffer();
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_USERNAME + p_username);
@@ -201,11 +201,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_EMAIL + p_email);
@@ -228,11 +228,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
@@ -256,11 +256,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
@@ -285,11 +285,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.GET_TRANSFER_URL);
@@ -311,11 +311,11 @@ public class MimoAPI
 
                 if (MimoAPIConstants.IS_LIVE_URL)
                 {
-                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
                 else 
                 {
-                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+                    m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 		}
                 
 		m_url.append(MimoAPIConstants.REFUND_TRANSFER_URL);
@@ -347,11 +347,11 @@ public class MimoAPI
 
             if (MimoAPIConstants.IS_LIVE_URL)
             {
-            	m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+            	m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
             }
             else 
             {
-		m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
 	    }
 	    m_url.append(MimoAPIConstants.VOID_FUND_TRANSFER_URL);
 	    m_url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_accessToken);
@@ -403,11 +403,11 @@ public class MimoAPI
             
             if (MimoAPIConstants.IS_LIVE_URL)
             {
-		m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 	    }
             else 
             {
-            	m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+            	m_url.append(MimoAPIConstants.SANDBOX_USER_API_SERVER);
             }
             
             m_url.append(MimoAPIConstants.REGISTER_BASE_URL);

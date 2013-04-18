@@ -106,6 +106,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_API_SERVER);
+		}
+                else
+                {
+                    m_url.append(MimoAPIConstants.STAGE_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.AUTHENTICATE_BASE_URL);
 		m_url.append(MimoAPIConstants.URL_KEY_CLIENT_ID
 				+ MimoAPIConstants.CLIENT_ID);
@@ -128,6 +137,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_API_SERVER);
+		}
+                else
+                {
+                    m_url.append(MimoAPIConstants.STAGE_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.GET_ACCESSTOKEN_BASE_URL);
 		m_url.append(MimoAPIConstants.URL_KEY_CLIENT_ID
 				+ MimoAPIConstants.CLIENT_ID);
@@ -153,7 +171,14 @@ public class MimoAPI
 	public static String getSearchByUsernameRequestURL(String p_username)
 	{
 		StringBuffer m_url = new StringBuffer();
-
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_USERNAME + p_username);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
@@ -174,6 +199,14 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_EMAIL + p_email);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
@@ -193,6 +226,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_PHONE + p_phone);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
@@ -212,6 +254,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.GET_PROFILE_URL);
 		m_url.append(MimoAPIConstants.SEARCH_ACCOUNT_NUMBER + p_account);
 		m_url.append(MimoAPIConstants.ACCESS_TOKEN_URL + m_accessToken);
@@ -232,6 +283,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.GET_TRANSFER_URL);
 		m_url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_accessToken);
 		m_url.append(MimoAPIConstants.TRANSFER_NOTES + p_notes);
@@ -249,6 +309,15 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
+                if (MimoAPIConstants.IS_LIVE_URL)
+                {
+                    m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+		}
+                else 
+                {
+                    m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+		}
+                
 		m_url.append(MimoAPIConstants.REFUND_TRANSFER_URL);
 		m_url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_accessToken);
                 try
@@ -263,7 +332,7 @@ public class MimoAPI
 
 		m_url.append(MimoAPIConstants.TRANSFER_AMOUNT + p_amount.trim());
 		m_url.append(MimoAPIConstants.FUND_TRANSACTION_ID + p_transId.trim());
-
+                
 		return m_url.toString().trim();
 	}
 
@@ -276,13 +345,21 @@ public class MimoAPI
 	{
             StringBuffer m_url = new StringBuffer();
 
+            if (MimoAPIConstants.IS_LIVE_URL)
+            {
+            	m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+            }
+            else 
+            {
+		m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+	    }
 	    m_url.append(MimoAPIConstants.VOID_FUND_TRANSFER_URL);
 	    m_url.append(MimoAPIConstants.TRANSFER_ACCESS_TOKEN + m_accessToken);
             m_url.append(MimoAPIConstants.FUND_TRANSACTION_ID + p_transId.trim());
             return m_url.toString().trim();
 	}
 
-       /**
+        /**
          * A function to generate the registration request url.
          * @param p_about The about paramter for register user. This field is optional.
          * @param p_accountType account type like 'personal' or 'merchant'. If account type is 'merchant' <br>
@@ -323,6 +400,16 @@ public class MimoAPI
                String p_companyName, String p_companyIdNumber, String p_rcIncorporationYear)
         {
             StringBuffer m_url = new StringBuffer();
+            
+            if (MimoAPIConstants.IS_LIVE_URL)
+            {
+		m_url.append(MimoAPIConstants.LIVE_USER_API_SERVER);
+	    }
+            else 
+            {
+            	m_url.append(MimoAPIConstants.STAGE_USER_API_SERVER);
+            }
+            
             m_url.append(MimoAPIConstants.REGISTER_BASE_URL);
             m_url.append(MimoAPIConstants.URL_KEY_CLIENT_ID + MimoAPIConstants.CLIENT_ID);
             m_url.append(MimoAPIConstants.URL_KEY_CLIENT_SECRET + MimoAPIConstants.CLIENT_SECRET);

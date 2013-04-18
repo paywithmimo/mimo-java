@@ -57,21 +57,31 @@ public final class MimoAPIConstants
 
 	// Authenticate Url Constants
 	public static final String AUTHENTICATE_BASE_URL =
-			"https://staging.mimo.com.ng/oauth/v2/authenticate?";
+			"authenticate?";
+        
+       //Staging URLs.
+	public static final String STAGE_API_SERVER="https://sandbox.mimo.com.ng/oauth/v2/";
+	public static final String STAGE_USER_API_SERVER = "https://sandbox.mimo.com.ng/partner/";
+	
+	//Live Server URLs.
+	public static final String LIVE_API_SERVER = "https://www.mimo.com.ng/oauth/v2/";
+	public static final String LIVE_USER_API_SERVER = "https://www.mimo.com.ng/partner/";
+        
+        public static boolean IS_LIVE_URL = false;
 
 	public static final String AUTHENTICATE_KEY_RESPONSE_TYPE =
 			"&response_type=code";
 
 	// GetAccess Token Url Constants
 	public static final String GET_ACCESSTOKEN_BASE_URL =
-			"https://staging.mimo.com.ng/oauth/v2/token?";
+			"token?";
 
 	public static final String GET_ACCESSTOKEN_KEY_GRANT_TYPE =
 			"&grant_type=authorization_code";
 
 	// Searching URL Constants
 	public static final String GET_PROFILE_URL =
-			"https://staging.mimo.com.ng/partner/user/card_id?";
+			"user/card_id?";
 
 	public static final String SEARCH_USERNAME = "username=";
 	public static final String SEARCH_EMAIL = "email=";
@@ -81,7 +91,7 @@ public final class MimoAPIConstants
 
 	// Fund Transfer URL Constants
 	public static final String GET_TRANSFER_URL =
-			"https://staging.mimo.com.ng/partner/transfers";
+			"transfers";
 
 	public static final String TRANSFER_ACCESS_TOKEN = "?access_token=";
 	public static final String TRANSFER_NOTES = "&notes=";
@@ -93,8 +103,8 @@ public final class MimoAPIConstants
 
 	public static final int CONNECTION_TIMEOUT=10000;
 	public static final int READ_TIMEOUT=10000;
-
-
+	
+	
 
     //JSON response constants.
 
@@ -124,16 +134,16 @@ public final class MimoAPIConstants
 
     //Register request.
     public static final String ACCESS_TOKEN_EXPIRES_IN = "access_token_expires_in";
-
+    
     public static final boolean DEBUG = false;
 
     //Re-fund Transfer URL Constants and Void Transfer URL Constants.
-    public static final String REFUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/refunds";
-    public static final String VOID_FUND_TRANSFER_URL="https://staging.mimo.com.ng/partner/transfers/void";
+    public static final String REFUND_TRANSFER_URL="refunds";
+    public static final String VOID_FUND_TRANSFER_URL="transfers/void";
     public static final String FUND_TRANSACTION_ID="&transaction_id=";
 
     //Register WS URL Constants.
-    public static final String REGISTER_BASE_URL = "https://staging.mimo.com.ng/partner/registration?";
+    public static final String REGISTER_BASE_URL = "registration?";
     public static final String REGISTER_ABOUT = "&about=";
     public static final String REGISTER_ACC_TYPE = "&account_type=";
     public static final String REGISTER_ADDRESS1 = "&address=";
@@ -161,7 +171,7 @@ public final class MimoAPIConstants
 
     public static final String REGISTER_ACCOUNT_TYPE_PERSONAL="personal";
     public static final String REGISTER_ACCOUNT_TYPE_MERCHANT="merchant";
-
+    
     public static final String REGISTER_COMPANY_NAME = "&company_name=";
     public static final String REGISTER_COM_ID_NUMBER =	"&company_id_number=";
     public static final String REGISTER_RC_INCORPORATION_YEAR =  "&rc_incorporation_year=";

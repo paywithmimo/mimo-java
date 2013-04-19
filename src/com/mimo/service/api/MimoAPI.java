@@ -106,7 +106,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_API_SERVER);
 		}
@@ -137,7 +137,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_API_SERVER);
 		}
@@ -171,7 +171,7 @@ public class MimoAPI
 	public static String getSearchByUsernameRequestURL(String p_username)
 	{
 		StringBuffer m_url = new StringBuffer();
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -199,7 +199,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -226,7 +226,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -254,7 +254,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -283,7 +283,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -309,7 +309,7 @@ public class MimoAPI
 	{
 		StringBuffer m_url = new StringBuffer();
 
-                if (MimoAPIConstants.IS_LIVE_URL)
+                if (MimoAPIConstants.IS_PRODUCTION_URL)
                 {
                     m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 		}
@@ -345,7 +345,7 @@ public class MimoAPI
 	{
             StringBuffer m_url = new StringBuffer();
 
-            if (MimoAPIConstants.IS_LIVE_URL)
+            if (MimoAPIConstants.IS_PRODUCTION_URL)
             {
             	m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
             }
@@ -401,7 +401,7 @@ public class MimoAPI
         {
             StringBuffer m_url = new StringBuffer();
             
-            if (MimoAPIConstants.IS_LIVE_URL)
+            if (MimoAPIConstants.IS_PRODUCTION_URL)
             {
 		m_url.append(MimoAPIConstants.PRODUCTION_USER_API_SERVER);
 	    }

@@ -59,15 +59,15 @@ public final class MimoAPIConstants
 	public static final String AUTHENTICATE_BASE_URL =
 			"authenticate?";
         
-       //Staging URLs.
+    //Sandbox URLs.
 	public static final String SANDBOX_API_SERVER="https://sandbox.mimo.com.ng/oauth/v2/";
 	public static final String SANDBOX_USER_API_SERVER = "https://sandbox.mimo.com.ng/partner/";
 	
-	//Live Server URLs.
+	//Production URLs.
 	public static final String PRODUCTION_API_SERVER = "https://www.mimo.com.ng/oauth/v2/";
 	public static final String PRODUCTION_USER_API_SERVER = "https://www.mimo.com.ng/partner/";
         
-        public static boolean IS_LIVE_URL = false;
+        public static boolean IS_PRODUCTION_URL = false;
 
 	public static final String AUTHENTICATE_KEY_RESPONSE_TYPE =
 			"&response_type=code";
